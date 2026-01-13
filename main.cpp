@@ -2,12 +2,12 @@
 #include <iostream>
 
 
-//* Create a vector of direction offsets. Precompute no of squares to edge
+//* Create a vector of direction offsets.
 std::vector<int> dir_offset = { 8, -8, 1, -1, 7, -7, 9, -9 };
 std::vector<int> knight_offsets = { 17, -17, 6, -6 };
 
 
-//* Precompute amount of squares to end of board from specific position (multi-dimensional array)
+//* Precompute amount of squares to end of board from every position (multi-dimensional array)
 std::vector<std::vector<int>> computeNumSquaresToEdge() {
 
     std::vector<std::vector<int>> numSquaresToEdge(64, std::vector<int>(4));
@@ -17,7 +17,7 @@ std::vector<std::vector<int>> computeNumSquaresToEdge() {
         int row = i / 8;
         int col = i % 8;
 
-        // North, South, East, West
+        // NSEW
         numSquaresToEdge[i][0] = 7 - row;
         numSquaresToEdge[i][1] = row;
         numSquaresToEdge[i][2] = 7 - col;
@@ -28,6 +28,8 @@ std::vector<std::vector<int>> computeNumSquaresToEdge() {
     return numSquaresToEdge;
 }
 
+
+//* Function to grab specific squares from the multidimentional array and stores in a single dimentional array
 std::vector<int> getSquaresToEdge(int squareIndex) {
 
     std::vector<std::vector<int>> numSquaresToEdge = computeNumSquaresToEdge();
@@ -41,7 +43,8 @@ std::vector<int> getSquaresToEdge(int squareIndex) {
     return squareDistanceVector;
 }
 
-//* Create struct for Moves:
+
+//* Create struct for Moves
 struct Moves {
     int Startpos;
     int Endpos;
@@ -86,7 +89,7 @@ struct Moves {
 
 void testComputeFunc() {
     std::vector<std::vector<int>> numSquaresToEdge = computeNumSquaresToEdge();
-    std::vector<int>squareDistanceVector = getSquaresToEdge(0);
+    std::vector<int>squareDistanceVector = getSquaresToEdge(63);
 
     for (int i = 0; i < 64; ++i) {
         std::cout << "Square " << i << ": ";
@@ -101,7 +104,6 @@ void testComputeFunc() {
     std::cout << squareDistanceVector[1] << ", ";
     std::cout << squareDistanceVector[2] << ", ";
     std::cout << squareDistanceVector[3] << std::endl;
-
 }
 
 int main() {

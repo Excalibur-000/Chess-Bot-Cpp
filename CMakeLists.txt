@@ -12,7 +12,7 @@ endif()
 project ("Chess-Bot-C++")
 
 # Add source to this project's executable.
-add_executable (Chess-Bot-C++ "Chess-Bot-C++.cpp" "Chess-Bot-C++.h")
+add_executable (Chess-Bot-C++ "main.cpp" "Chess-Bot-C++.h")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET Chess-Bot-C++ PROPERTY CXX_STANDARD 20)
