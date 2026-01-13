@@ -89,16 +89,18 @@ struct Moves {
 
 void testComputeFunc() {
     std::vector<std::vector<int>> numSquaresToEdge = computeNumSquaresToEdge();
-    std::vector<int>squareDistanceVector = getSquaresToEdge(63);
+    std::vector<int>squareDistanceVector = getSquaresToEdge(1);
 
     for (int i = 0; i < 64; ++i) {
-        std::cout << "Square " << i << ": ";
-        std::cout << "North = " << numSquaresToEdge[i][0] << ", ";
-        std::cout << "South = " << numSquaresToEdge[i][1] << ", ";
-        std::cout << "East = " << numSquaresToEdge[i][2] << ", ";
-        std::cout << "West = " << numSquaresToEdge[i][3] << std::endl;
+        std::cout << "[";
+        std::cout << numSquaresToEdge[i][0] << ", ";
+        std::cout << numSquaresToEdge[i][1] << ", ";
+        std::cout << numSquaresToEdge[i][2] << ", ";
+        std::cout << numSquaresToEdge[i][3] << "], ";
     }
 
+    std::cout << "" << std::endl;
+    std::cout << "" << std::endl;
 
     std::cout << squareDistanceVector[0] << ", ";
     std::cout << squareDistanceVector[1] << ", ";
